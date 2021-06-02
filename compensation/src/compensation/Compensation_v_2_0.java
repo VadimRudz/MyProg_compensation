@@ -36,40 +36,40 @@ import javax.swing.ScrollPaneConstants;
 public class Compensation_v_2_0 extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
-	static int numberOfTreesHvoinoe_hor;
-	static int numberOfTreesHvoinoe_udovl;
-	static int numberOfTreesHvoinoe_ploh;
-	static int numberOfTreesHvoinoe_nenadl;
+	int numberOfTreesHvoinoe_hor;
+	int numberOfTreesHvoinoe_udovl;
+	int numberOfTreesHvoinoe_ploh;
+	int numberOfTreesHvoinoe_nenadl;
 	
-	static int numberOfTreesMedlennoeListvennoe_hor;
-	static int numberOfTreesMedlennoeListvennoe_udovl;
-	static int numberOfTreesMedlennoeListvennoe_ploh;
-	static int numberOfTreesMedlennoeListvennoe_nenadl;
+	int numberOfTreesMedlennoeListvennoe_hor;
+	int numberOfTreesMedlennoeListvennoe_udovl;
+	int numberOfTreesMedlennoeListvennoe_ploh;
+	int numberOfTreesMedlennoeListvennoe_nenadl;
 	
-	static int numberOfTreesBystroListvennoe_hor;
-	static int numberOfTreesBystroListvennoe_udovl;
-	static int numberOfTreesBystroListvennoe_ploh;
-	static int numberOfTreesBystroListvennoe_nenadl;
+	int numberOfTreesBystroListvennoe_hor;
+	int numberOfTreesBystroListvennoe_udovl;
+	int numberOfTreesBystroListvennoe_ploh;
+	int numberOfTreesBystroListvennoe_nenadl;
 	
-	static int numberOfTreesMalocennoe_hor;
-	static int numberOfTreesMalocennoe_udovl;
-	static int numberOfTreesMalocennoe_ploh;
-	static int numberOfTreesMalocennoe_nenadl;
+	int numberOfTreesMalocennoe_hor;
+	int numberOfTreesMalocennoe_udovl;
+	int numberOfTreesMalocennoe_ploh;
+	int numberOfTreesMalocennoe_nenadl;
 	
-	static int numberOfOther_hor;
-	static int numberOfOther_udovl;
-	static int numberOfOther_ploh;
-	static int numberOfOther_nenadl;
+	int numberOfOther_hor;
+	int numberOfOther_udovl;
+	int numberOfOther_ploh;
+	int numberOfOther_nenadl;
 	
 	int ThanTree,ThanTree_$, skolkoDereviev, K1_ogranichenia;
 	
-	static double numberOfPorosol_hor;
-	static double numberOfPorosol_udovl;
-	static double numberOfPorosol_ploh;
-	static double numberOfPorosol_nenadl;
+	double numberOfPorosol_hor;
+	double numberOfPorosol_udovl;
+	double numberOfPorosol_ploh;
+	double numberOfPorosol_nenadl;
 	
-	static double  Vobj;
-	static double  Vobj_$;
+	double  Vobj;
+	double  Vobj_$;
 	
 	double diametrObolochka, K2_budget, K3_seti, K4_naselennyiPunt; 
 	
@@ -114,8 +114,8 @@ public class Compensation_v_2_0 extends JFrame{
 	    jfrm.setSize(850,570);
 	    jfrm.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	    jfrm.setLocationRelativeTo(null);
-	    jfrm.setIconImage(Toolkit.getDefaultToolkit().getImage("C:/Users/k801_1/workspace1/compensation/src/Tree.png")); //установка иконки
-		
+	    jfrm.setIconImage(Toolkit.getDefaultToolkit().getImage("./src/Tree.png")); //установка иконки
+		//C:/Users/k801_1/workspace1/compensation/src/Tree.png
 	    JPanel panel = new JPanel();
 	    JScrollPane jScrollPane = new JScrollPane(panel);
 	    panel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -730,7 +730,7 @@ public class Compensation_v_2_0 extends JFrame{
 	    
 		//Добавление деревье +
 	   
-	    Icon icon = new ImageIcon("C:/Users/k801_1/workspace1/compensation/src/+.png");
+	    Icon icon = new ImageIcon("./src/+.png");
 	    JButton jbtBetta = new JButton(icon);
 	    JPanel jbtBettaPanel = new JPanel();
 	    jbtBettaPanel.add(jbtBetta);
@@ -1029,7 +1029,7 @@ public class Compensation_v_2_0 extends JFrame{
 	    	
 		}
 
-		File file = new File ("D:\\DOWNLOADS", "Расчет компенсации деревьев(деньгами).doc");
+		File file = new File ("./src/result/", "Расчет компенсации деревьев(деньгами).doc"); //./src/+.png  D:\\DOWNLOADS
 		PrintWriter pw = new PrintWriter(file);
 		pw.println("");
 		pw.print("			РАСЧЕТ КОМПЕНСАЦИИ ДЕРЕВЬЕВ ");
@@ -1131,7 +1131,7 @@ public class Compensation_v_2_0 extends JFrame{
 	
 	public void writefile() throws IOException{
 		
-		File file = new File ("D:\\DOWNLOADS", "Расчет компенсации деревьев(зелеными насаждениями).doc");
+		File file = new File ("./src/result/", "Расчет компенсации деревьев(зелеными насаждениями).doc");
 		PrintWriter pw = new PrintWriter(file);
 		pw.println("");
 		pw.print("			РАСЧЕТ КОМПЕНСАЦИИ ДЕРЕВЬЕВ ");
