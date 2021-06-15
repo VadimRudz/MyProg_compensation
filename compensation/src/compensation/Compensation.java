@@ -32,75 +32,73 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
-
-public class Compensation_v_2_0 extends JFrame{
+public class Compensation extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
-	int numberOfTreesHvoinoe_hor;
-	int numberOfTreesHvoinoe_udovl;
-	int numberOfTreesHvoinoe_ploh;
-	int numberOfTreesHvoinoe_nenadl;
+	int numberOfTreesHvoinoeGoodCondition;
+	int numberOfTreesHvoinoeSatisfactoryCondition;
+	int numberOfTreesHvoinoeBadCondition;
+	int numberOfTreesHvoinoeImproperCondition;
 	
-	int numberOfTreesMedlennoeListvennoe_hor;
-	int numberOfTreesMedlennoeListvennoe_udovl;
-	int numberOfTreesMedlennoeListvennoe_ploh;
-	int numberOfTreesMedlennoeListvennoe_nenadl;
+	int numberOfTreesMedlennoeListvennoeGoodCondition;
+	int numberOfTreesMedlennoeListvennoeSatisfactoryCondition;
+	int numberOfTreesMedlennoeListvennoeBadCondition;
+	int numberOfTreesMedlennoeListvennoeImproperCondition;
 	
-	int numberOfTreesBystroListvennoe_hor;
-	int numberOfTreesBystroListvennoe_udovl;
-	int numberOfTreesBystroListvennoe_ploh;
-	int numberOfTreesBystroListvennoe_nenadl;
+	int numberOfTreesBystroListvennoeGoodCondition;
+	int numberOfTreesBystroListvennoeSatisfactoryCondition;
+	int numberOfTreesBystroListvennoeBadCondition;
+	int numberOfTreesBystroListvennoeImproperCondition;
 	
-	int numberOfTreesMalocennoe_hor;
-	int numberOfTreesMalocennoe_udovl;
-	int numberOfTreesMalocennoe_ploh;
-	int numberOfTreesMalocennoe_nenadl;
+	int numberOfTreesMalocennoeGoodCondition;
+	int numberOfTreesMalocennoeSatisfactoryCondition;
+	int numberOfTreesMalocennoeBadCondition;
+	int numberOfTreesMalocennoeImproperCondition;
 	
-	int numberOfOther_hor;
-	int numberOfOther_udovl;
-	int numberOfOther_ploh;
-	int numberOfOther_nenadl;
+	int numberOfOtherGoodCondition;
+	int numberOfOtherSatisfactoryCondition;
+	int numberOfOtherBadCondition;
+	int numberOfOtherImproperCondition;
 	
-	int ThanTree,ThanTree_$, skolkoDereviev, K1_ogranichenia;
+	int typeOfTree, coefficientOgranichenia;
 	
-	double numberOfPorosol_hor;
-	double numberOfPorosol_udovl;
-	double numberOfPorosol_ploh;
-	double numberOfPorosol_nenadl;
+	double numberOfPorosolGoodCondition;
+	double numberOfPorosolSatisfactoryCondition;
+	double numberOfPorosolBadCondition;
+	double numberOfPorosolImproperCondition;
 	
-	double  Vobj;
-	double  Vobj_$;
+	double  summarnoeChisloDereevev;
 	
-	double diametrObolochka, K2_budget, K3_seti, K4_naselennyiPunt; 
+	double diametrObolochka, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt; 
 	
-	double K5_sostoianie_hor = 1;;
-	double K5_sostoianie_udovl = 0.75;
-	double K5_sostoianie_ploh = 0.5;
-	double K5_sostoianie_nenadl = 0.1;
-	
+	double coefficientGoodCondition = 1;;
+	double coefficientSatisfactoryCondition = 0.75;
+	double coefficientBadCondition = 0.5;
+	double coefficientImproperCondition = 0.1;
 	
 	
-	DecimalFormat df = new DecimalFormat("###.##"); //округляет цифры с плав. точкой до 2х знаков после запятой
+	
+	DecimalFormat decimalFormat = new DecimalFormat("###.##"); //округляет цифры с плав. точкой до 2х знаков после запятой
 
 	String [] massWhatTreesCompensate = {"Хвойной породы", "Медленнорастущей лиственной породы", "Быстрорастущие лиственной породы"};
 	
-	String [] massWhatTreesCompensate_$ = {"Хвойной породы", "Медленнорастущей лиственной породы", "Быстрорастущие лиственной породы", "Малоценное лиственное"
+	String [] massWhatTreesCompensateMoney = {"Хвойной породы", "Медленнорастущей лиственной породы", "Быстрорастущие лиственной породы", "Малоценное лиственное"
 			, "Высаженное в целях озеленения: хвойное <1см.", "Высаженное в целях озеленения: медленнораст. листв. <1см." , 
 			"Высаженное в целях озеленения: быстрораст. листв. <1см." , "Высаженное в целях озеленения: малоцен. листв. <4см." ,
 			"Участок поросли(самосева),др. с диаметром <1(4) см"};
 	
-	String [] yesNo  = {"Да", "Нет"};
+	String [] massChooseYesOrNo  = {"Да", "Нет"};
 	
-	String [] state  = {"Хорошее", "Удовлетв", "Плохое", "Ненадлеж"};
+	String [] stateOfTree  = {"Хорошее", "Удовлетв", "Плохое", "Ненадлеж"};
 	
-	StringBuffer Hvoinoe = new StringBuffer("");
-	StringBuffer Medlenno = new StringBuffer("");
-	StringBuffer Bystro = new StringBuffer("");
-	StringBuffer Malocennoe = new StringBuffer("");
-	StringBuffer VysagennoeHvoinoe = new StringBuffer("");
-	StringBuffer VysagennoeMedlenno = new StringBuffer("");
-	StringBuffer VysagennoeBystro = new StringBuffer("");
-	StringBuffer VysagennoeMalocennoe = new StringBuffer("");
+	StringBuffer coniferTree = new StringBuffer("");
+	StringBuffer slowGrowingTree = new StringBuffer("");
+	StringBuffer fastGrowingTree = new StringBuffer("");
+	StringBuffer lowValueTree = new StringBuffer("");
+	StringBuffer plantedConiferousTree = new StringBuffer("");
+	StringBuffer plantedSlowGrowingTree = new StringBuffer("");
+	StringBuffer plantedFastGrowingTree = new StringBuffer("");
+	StringBuffer plantedlowValueTree = new StringBuffer("");
 	StringBuffer Porosol = new StringBuffer("");
 	
 	ArrayList <Tree> arrayTree = new ArrayList<Tree>();
@@ -109,13 +107,11 @@ public class Compensation_v_2_0 extends JFrame{
 	public void go()
 	
 	{
-	
 		JFrame jfrm = new JFrame ("Расчет компенсации растительности");
 	    jfrm.setSize(850,570);
 	    jfrm.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	    jfrm.setLocationRelativeTo(null);
 	    jfrm.setIconImage(Toolkit.getDefaultToolkit().getImage("./src/Tree.png")); //установка иконки
-		//C:/Users/k801_1/workspace1/compensation/src/Tree.png
 	    JPanel panel = new JPanel();
 	    JScrollPane jScrollPane = new JScrollPane(panel);
 	    panel.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -476,9 +472,9 @@ public class Compensation_v_2_0 extends JFrame{
 		{
 			public void actionPerformed(ActionEvent ae)
 			{
-				if (jcmbb81.getSelectedItem().equals("Хвойной породы")){ThanTree = 1;};
-				if (jcmbb81.getSelectedItem().equals("Медленнорастущей лиственной породы")){ThanTree = 2;};
-				if (jcmbb81.getSelectedItem().equals("Быстрорастущие лиственной породы")){ThanTree = 3;};
+				if (jcmbb81.getSelectedItem().equals("Хвойной породы")){typeOfTree = 1;};
+				if (jcmbb81.getSelectedItem().equals("Медленнорастущей лиственной породы")){typeOfTree = 2;};
+				if (jcmbb81.getSelectedItem().equals("Быстрорастущие лиственной породы")){typeOfTree = 3;};
 				
 			}
 		});
@@ -495,14 +491,14 @@ public class Compensation_v_2_0 extends JFrame{
 		    //constraints.weightx = 0.5;
 		    panel.add(jlab90,constraints);
 		    
-		    final JComboBox<String> jcmbb91 = new JComboBox<String>(yesNo);
+		    final JComboBox<String> jcmbb91 = new JComboBox<String>(massChooseYesOrNo);
 		    jcmbb91.setSelectedItem(null);
 		    jcmbb91.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent ae)
 				{
-					if (jcmbb91.getSelectedItem().equals("Да")){K1_ogranichenia = 2;};
-					if (jcmbb91.getSelectedItem().equals("Нет")){K1_ogranichenia = 1;};
+					if (jcmbb91.getSelectedItem().equals("Да")){coefficientOgranichenia = 2;};
+					if (jcmbb91.getSelectedItem().equals("Нет")){coefficientOgranichenia = 1;};
 					
 				}
 			});
@@ -519,14 +515,14 @@ public class Compensation_v_2_0 extends JFrame{
 		panel.add(jlab10_0,constraints);
 	    
 	   
-		final JComboBox<String> jcmbb10_1 = new JComboBox<String>(yesNo);
+		final JComboBox<String> jcmbb10_1 = new JComboBox<String>(massChooseYesOrNo);
 		jcmbb10_1.setSelectedItem(null);
 		jcmbb10_1.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent ae)
 				{
-					if (jcmbb10_1.getSelectedItem().equals("Да")){K2_budget = 0.5;};
-					if (jcmbb10_1.getSelectedItem().equals("Нет")){K2_budget = 1;};
+					if (jcmbb10_1.getSelectedItem().equals("Да")){coefficientBudget = 0.5;};
+					if (jcmbb10_1.getSelectedItem().equals("Нет")){coefficientBudget = 1;};
 					
 				}
 		}); 
@@ -543,14 +539,14 @@ public class Compensation_v_2_0 extends JFrame{
 			constraints.gridy = 10;
 			panel.add(jlab11_0,constraints);
 		    
-			final JComboBox<String> jcmbb11_1 = new JComboBox<String>(yesNo);
+			final JComboBox<String> jcmbb11_1 = new JComboBox<String>(massChooseYesOrNo);
 			jcmbb11_1.setSelectedItem(null);
 			jcmbb11_1.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent ae)
 				{
-					if (jcmbb11_1.getSelectedItem().equals("Да")){K3_seti = 0.5;};
-					if (jcmbb11_1.getSelectedItem().equals("Нет")){K3_seti = 1;};
+					if (jcmbb11_1.getSelectedItem().equals("Да")){coefficientSeti = 0.5;};
+					if (jcmbb11_1.getSelectedItem().equals("Нет")){coefficientSeti = 1;};
 					
 				}
 			});
@@ -567,14 +563,14 @@ public class Compensation_v_2_0 extends JFrame{
 			panel.add(jlab12_0,constraints);
 		    
 		    
-			final JComboBox<String> jcmbb12_1 = new JComboBox<String>(yesNo);
+			final JComboBox<String> jcmbb12_1 = new JComboBox<String>(massChooseYesOrNo);
 			jcmbb12_1.setSelectedItem(null);
 			jcmbb12_1.addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent ae)
 				{
-					if (jcmbb12_1.getSelectedItem().equals("Да")){K4_naselennyiPunt = 0.1;};
-					if (jcmbb12_1.getSelectedItem().equals("Нет")){K4_naselennyiPunt = 1;};
+					if (jcmbb12_1.getSelectedItem().equals("Да")){coefficientNaselennyiPunt = 0.1;};
+					if (jcmbb12_1.getSelectedItem().equals("Нет")){coefficientNaselennyiPunt = 1;};
 					
 				}
 			});
@@ -599,12 +595,12 @@ public class Compensation_v_2_0 extends JFrame{
 			|| jcmbb10_1.getSelectedItem() == null ||jcmbb91.getSelectedItem()==null 
 			|| jcmbb81.getSelectedItem() == null || 
 			
-			(numberOfTreesHvoinoe_hor==0 && numberOfTreesHvoinoe_udovl ==0 && numberOfTreesHvoinoe_ploh ==0 && numberOfTreesHvoinoe_nenadl==0
-			&& numberOfTreesMedlennoeListvennoe_hor==0 && numberOfTreesMedlennoeListvennoe_udovl ==0 && numberOfTreesMedlennoeListvennoe_ploh ==0 && numberOfTreesMedlennoeListvennoe_nenadl==0
-			&&numberOfTreesBystroListvennoe_hor==0 && numberOfTreesBystroListvennoe_udovl==0 && numberOfTreesBystroListvennoe_ploh==0 && numberOfTreesBystroListvennoe_nenadl==0
-			&&numberOfTreesMalocennoe_hor==0 && numberOfTreesMalocennoe_udovl==0 && numberOfTreesMalocennoe_ploh==0 && numberOfTreesMalocennoe_nenadl==0
-			&&numberOfOther_hor==0 && numberOfOther_udovl==0 && numberOfOther_ploh==0 && numberOfOther_nenadl==0		
-			&&numberOfPorosol_hor==0 && numberOfPorosol_udovl==0 && numberOfPorosol_ploh==0 && numberOfPorosol_nenadl==0)) 
+			(numberOfTreesHvoinoeGoodCondition==0 && numberOfTreesHvoinoeSatisfactoryCondition ==0 && numberOfTreesHvoinoeBadCondition ==0 && numberOfTreesHvoinoeImproperCondition==0
+			&& numberOfTreesMedlennoeListvennoeGoodCondition==0 && numberOfTreesMedlennoeListvennoeSatisfactoryCondition ==0 && numberOfTreesMedlennoeListvennoeBadCondition ==0 && numberOfTreesMedlennoeListvennoeImproperCondition==0
+			&&numberOfTreesBystroListvennoeGoodCondition==0 && numberOfTreesBystroListvennoeSatisfactoryCondition==0 && numberOfTreesBystroListvennoeBadCondition==0 && numberOfTreesBystroListvennoeImproperCondition==0
+			&&numberOfTreesMalocennoeGoodCondition==0 && numberOfTreesMalocennoeSatisfactoryCondition==0 && numberOfTreesMalocennoeBadCondition==0 && numberOfTreesMalocennoeImproperCondition==0
+			&&numberOfOtherGoodCondition==0 && numberOfOtherSatisfactoryCondition==0 && numberOfOtherBadCondition==0 && numberOfOtherImproperCondition==0		
+			&&numberOfPorosolGoodCondition==0 && numberOfPorosolSatisfactoryCondition==0 && numberOfPorosolBadCondition==0 && numberOfPorosolImproperCondition==0)) 
 				
 				{
 				JOptionPane.showMessageDialog(null,"Вы не ввели все требуемые значения","Red Alert",JOptionPane.PLAIN_MESSAGE);		
@@ -637,7 +633,7 @@ public class Compensation_v_2_0 extends JFrame{
 	    
 	    //Порода
 	    
-	    final JComboBox<String> jcmbb$_01 = new JComboBox<String>(massWhatTreesCompensate_$);
+	    final JComboBox<String> jcmbb$_01 = new JComboBox<String>(massWhatTreesCompensateMoney);
 	    treeName(jcmbb$_01, theTree);
 	    constraints$.gridx = 0;
 	    constraints$.gridy = 0;
@@ -647,7 +643,7 @@ public class Compensation_v_2_0 extends JFrame{
 	    
 
 	    ///Состояние
-	    final JComboBox<String> jcmbb$_02 = new JComboBox<String>(state);
+	    final JComboBox<String> jcmbb$_02 = new JComboBox<String>(stateOfTree);
 	    treeState(jcmbb$_02,theTree);
 	    constraints$.gridx = 3;
 	    constraints$.gridy = 0;
@@ -747,7 +743,7 @@ public class Compensation_v_2_0 extends JFrame{
 			{
 			
 			Tree theTreePlus = new Tree ();
-			final JComboBox<String> jcmbb$_01 = new JComboBox<String>(massWhatTreesCompensate_$);
+			final JComboBox<String> jcmbb$_01 = new JComboBox<String>(massWhatTreesCompensateMoney);
 			treeName(jcmbb$_01, theTreePlus);
 			
 		    constraints$.gridy +=2;
@@ -762,7 +758,7 @@ public class Compensation_v_2_0 extends JFrame{
 		    constraints$.ipady = 6; // ширина
 		    panelSecond.add(jcmbb$_01,constraints$);
 		     
-		    final JComboBox<String> jcmbb$_02 = new JComboBox<String>(state);
+		    final JComboBox<String> jcmbb$_02 = new JComboBox<String>(stateOfTree);
 		    treeState(jcmbb$_02, theTreePlus);
 		    
 		    constraints$.gridx +=2;
@@ -1088,34 +1084,34 @@ public class Compensation_v_2_0 extends JFrame{
 		for ( Tree tree : arrayTree) {
 			
 			if (tree.treeName.equals("Хвойной породы")) 
-			{Hvoinoe.append(tree.S + " * " + tree.K1 +  " * " + tree.K2 + " * " + tree.K3 +" * " + tree.K4 + " * " + tree.Kstate + " + ");}
+			{coniferTree.append(tree.S + " * " + tree.K1 +  " * " + tree.K2 + " * " + tree.K3 +" * " + tree.K4 + " * " + tree.Kstate + " + ");}
 			else if (tree.treeName.equals("Медленнорастущей лиственной породы")) 
-			{Medlenno.append(tree.S + " * " + tree.K1 +  " * " + tree.K2 + " * " + tree.K3 +" * " + tree.K4 + " * " + tree.Kstate + " + ");}
+			{slowGrowingTree.append(tree.S + " * " + tree.K1 +  " * " + tree.K2 + " * " + tree.K3 +" * " + tree.K4 + " * " + tree.Kstate + " + ");}
 			else if (tree.treeName.equals("Быстрорастущие лиственной породы")) 
-			{Bystro.append(tree.S + " * " + tree.K1 +  " * " + tree.K2 + " * " + tree.K3 +" * " + tree.K4 + " * " + tree.Kstate + " + ");}
+			{fastGrowingTree.append(tree.S + " * " + tree.K1 +  " * " + tree.K2 + " * " + tree.K3 +" * " + tree.K4 + " * " + tree.Kstate + " + ");}
 			else if (tree.treeName.equals("Малоценное лиственное")) 
-			{Malocennoe.append(tree.S + " * " + tree.K1 +  " * " + tree.K2 + " * " + tree.K3 +" * " + tree.K4 + " * " + tree.Kstate + " + ");}
+			{lowValueTree.append(tree.S + " * " + tree.K1 +  " * " + tree.K2 + " * " + tree.K3 +" * " + tree.K4 + " * " + tree.Kstate + " + ");}
 			else if (tree.treeName.equals("Высаженное в целях озеленения: хвойное <1см.")) 
-			{VysagennoeHvoinoe.append(tree.S + " * " + tree.K1 +  " * " + tree.K2 + " * " + tree.K3 +" * " + tree.K4 + " * " + tree.Kstate + " + ");}
+			{plantedConiferousTree.append(tree.S + " * " + tree.K1 +  " * " + tree.K2 + " * " + tree.K3 +" * " + tree.K4 + " * " + tree.Kstate + " + ");}
 			else if (tree.treeName.equals("Высаженное в целях озеленения: медленнораст. листв. <1см.")) 
-			{VysagennoeMedlenno.append(tree.S + " * " + tree.K1 +  " * " + tree.K2 + " * " + tree.K3 +" * " + tree.K4 + " * " + tree.Kstate + " + ");}
+			{plantedSlowGrowingTree.append(tree.S + " * " + tree.K1 +  " * " + tree.K2 + " * " + tree.K3 +" * " + tree.K4 + " * " + tree.Kstate + " + ");}
 			else if (tree.treeName.equals("Высаженное в целях озеленения: быстрораст. листв. <1см.")) 
-			{VysagennoeBystro.append(tree.S + " * " + tree.K1 +  " * " + tree.K2 + " * " + tree.K3 +" * " + tree.K4 + " * " + tree.Kstate + " + ");}
+			{plantedFastGrowingTree.append(tree.S + " * " + tree.K1 +  " * " + tree.K2 + " * " + tree.K3 +" * " + tree.K4 + " * " + tree.Kstate + " + ");}
 			else if (tree.treeName.equals("Высаженное в целях озеленения: малоцен. листв. <4см.")) 
-			{VysagennoeMalocennoe.append(tree.S + " * " + tree.K1 +  " * " + tree.K2 + " * " + tree.K3 +" * " + tree.K4 + " * " + tree.Kstate + " + ");}
+			{plantedlowValueTree.append(tree.S + " * " + tree.K1 +  " * " + tree.K2 + " * " + tree.K3 +" * " + tree.K4 + " * " + tree.Kstate + " + ");}
 			else  
 			{Porosol.append(tree.S + " * " + tree.K1 +  " * " + tree.K2 + " * " + tree.K3 +" * " + tree.K4 + " * " + tree.Kstate + " + ");}
 									
 		}
 		
-		if(Hvoinoe.equals("")) {removePlusSign(Hvoinoe);} //??
-		else if(Medlenno.equals("")) {removePlusSign(Medlenno);}
-		else if(Bystro.equals("")) {removePlusSign(Bystro);}
-		else if(Malocennoe.equals("")) {removePlusSign(Malocennoe);}
-		else if(VysagennoeHvoinoe.equals("")) {removePlusSign(VysagennoeHvoinoe);}
-		else if(VysagennoeMedlenno.equals("")) {removePlusSign(VysagennoeMedlenno);}
-		else if(VysagennoeBystro.equals("")) {removePlusSign(VysagennoeBystro);}
-		else if(VysagennoeMalocennoe.equals("")) {removePlusSign(VysagennoeMalocennoe);}
+		if(coniferTree.equals("")) {removePlusSign(coniferTree);} //??
+		else if(slowGrowingTree.equals("")) {removePlusSign(slowGrowingTree);}
+		else if(fastGrowingTree.equals("")) {removePlusSign(fastGrowingTree);}
+		else if(lowValueTree.equals("")) {removePlusSign(lowValueTree);}
+		else if(plantedConiferousTree.equals("")) {removePlusSign(plantedConiferousTree);}
+		else if(plantedSlowGrowingTree.equals("")) {removePlusSign(plantedSlowGrowingTree);}
+		else if(plantedFastGrowingTree.equals("")) {removePlusSign(plantedFastGrowingTree);}
+		else if(plantedlowValueTree.equals("")) {removePlusSign(plantedlowValueTree);}
 		else if(Porosol.equals("")) {removePlusSign(Porosol);};
 		
 
@@ -1155,167 +1151,167 @@ public class Compensation_v_2_0 extends JFrame{
 		pw.println("-для удаляемых деревьев, находящихся в ненадлежащем качественном состоянии, – коэффициент, равный 0,25;");
 		
 		
-		if (numberOfTreesHvoinoe_hor!=0 || numberOfTreesHvoinoe_udovl!=0 || numberOfTreesHvoinoe_ploh!=0 || numberOfTreesHvoinoe_nenadl!=0){ 
+		if (numberOfTreesHvoinoeGoodCondition!=0 || numberOfTreesHvoinoeSatisfactoryCondition!=0 || numberOfTreesHvoinoeBadCondition!=0 || numberOfTreesHvoinoeImproperCondition!=0){ 
 		pw.println("");
 		pw.println("Для компенсации сноса хвойных деревьев, необходима посадка: ");
 		pw.println("");}
 		
 		
-		if (ThanTree == 1 || ThanTree == 2){
-			Vobj = 0;
-			Method_XSeven(pw,numberOfTreesHvoinoe_hor,3,"(хорошее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_hor);
-			Method_XSeven(pw,numberOfTreesHvoinoe_udovl,3,"(удовлетворительное состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_udovl);
-			Method_XSeven(pw,numberOfTreesHvoinoe_ploh,3,"(плохое состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_ploh);
-			Method_XSeven(pw,numberOfTreesHvoinoe_nenadl,3,"(ненадлежащее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_nenadl);
+		if (typeOfTree == 1 || typeOfTree == 2){
+			summarnoeChisloDereevev = 0;
+			Method_XSeven(pw,numberOfTreesHvoinoeGoodCondition,3,"(хорошее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfTreesHvoinoeSatisfactoryCondition,3,"(удовлетворительное состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfTreesHvoinoeBadCondition,3,"(плохое состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientBadCondition);
+			Method_XSeven(pw,numberOfTreesHvoinoeImproperCondition,3,"(ненадлежащее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientImproperCondition);
 			
 			pw.println("");
-			pw.println(" Vобщее = " + Math.round(Vobj) + ";");
+			pw.println(" Vобщее = " + Math.round(summarnoeChisloDereevev) + ";");
 		};
 		
-		if (ThanTree == 3){
-			Vobj = 0;
-			Method_XSeven(pw,numberOfTreesHvoinoe_hor,6,"(хорошее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_hor);
-			Method_XSeven(pw,numberOfTreesHvoinoe_udovl,6,"(удовлетворительное состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_udovl);
-			Method_XSeven(pw,numberOfTreesHvoinoe_ploh,6,"(плохое состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_ploh);
-			Method_XSeven(pw,numberOfTreesHvoinoe_nenadl,6,"(ненадлежащее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_nenadl);
+		if (typeOfTree == 3){
+			summarnoeChisloDereevev = 0;
+			Method_XSeven(pw,numberOfTreesHvoinoeGoodCondition,6,"(хорошее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfTreesHvoinoeSatisfactoryCondition,6,"(удовлетворительное состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfTreesHvoinoeBadCondition,6,"(плохое состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientBadCondition);
+			Method_XSeven(pw,numberOfTreesHvoinoeImproperCondition,6,"(ненадлежащее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientImproperCondition);
 			
 			pw.println("");
-			pw.println("Vобщее = " + Math.round(Vobj) + ";");
+			pw.println("Vобщее = " + Math.round(summarnoeChisloDereevev) + ";");
 		};
 		
-		if (numberOfTreesMedlennoeListvennoe_hor!=0 || numberOfTreesMedlennoeListvennoe_udovl!=0 || numberOfTreesMedlennoeListvennoe_ploh!=0 || numberOfTreesMedlennoeListvennoe_nenadl!=0){ 
+		if (numberOfTreesMedlennoeListvennoeGoodCondition!=0 || numberOfTreesMedlennoeListvennoeSatisfactoryCondition!=0 || numberOfTreesMedlennoeListvennoeBadCondition!=0 || numberOfTreesMedlennoeListvennoeImproperCondition!=0){ 
 		pw.println("");
 		pw.println("Для компенсации сноса лиственных медленнорастущих деревьев, необходима посадка: ");
 		pw.println("");}
 		
-		if (ThanTree == 1 || ThanTree == 2){
-			Vobj = 0;
-			Method_XSeven(pw,numberOfTreesMedlennoeListvennoe_hor,3,"(хорошее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_hor);
-			Method_XSeven(pw,numberOfTreesMedlennoeListvennoe_udovl,3,"(удовлетворительное состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_udovl);
-			Method_XSeven(pw,numberOfTreesMedlennoeListvennoe_ploh,3,"(плохое состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_ploh);
-			Method_XSeven(pw,numberOfTreesMedlennoeListvennoe_nenadl,3,"(ненадлежащее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_nenadl);
+		if (typeOfTree == 1 || typeOfTree == 2){
+			summarnoeChisloDereevev = 0;
+			Method_XSeven(pw,numberOfTreesMedlennoeListvennoeGoodCondition,3,"(хорошее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfTreesMedlennoeListvennoeSatisfactoryCondition,3,"(удовлетворительное состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfTreesMedlennoeListvennoeBadCondition,3,"(плохое состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientBadCondition);
+			Method_XSeven(pw,numberOfTreesMedlennoeListvennoeImproperCondition,3,"(ненадлежащее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientImproperCondition);
 
 			pw.println("");
-			pw.println("Vобщее = " + Math.round(Vobj) + ";");
+			pw.println("Vобщее = " + Math.round(summarnoeChisloDereevev) + ";");
 		};
 		
-		if (ThanTree == 3){
-			Vobj = 0;
-			Method_XSeven(pw,numberOfTreesMedlennoeListvennoe_hor,6,"(хорошее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_hor);
-			Method_XSeven(pw,numberOfTreesMedlennoeListvennoe_udovl,6,"(удовлетворительное состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_udovl);
-			Method_XSeven(pw,numberOfTreesMedlennoeListvennoe_ploh,6,"(плохое состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_ploh);
-			Method_XSeven(pw,numberOfTreesMedlennoeListvennoe_nenadl,6,"(ненадлежащее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_nenadl);
+		if (typeOfTree == 3){
+			summarnoeChisloDereevev = 0;
+			Method_XSeven(pw,numberOfTreesMedlennoeListvennoeGoodCondition,6,"(хорошее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfTreesMedlennoeListvennoeSatisfactoryCondition,6,"(удовлетворительное состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfTreesMedlennoeListvennoeBadCondition,6,"(плохое состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientBadCondition);
+			Method_XSeven(pw,numberOfTreesMedlennoeListvennoeImproperCondition,6,"(ненадлежащее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientImproperCondition);
 
 			pw.println("");
-			pw.println("Vобщее = " + Math.round(Vobj) + ";");
+			pw.println("Vобщее = " + Math.round(summarnoeChisloDereevev) + ";");
 		};
 	
-		if (numberOfTreesBystroListvennoe_hor!=0 || numberOfTreesBystroListvennoe_udovl!=0 || numberOfTreesBystroListvennoe_ploh!=0 || numberOfTreesBystroListvennoe_nenadl!=0){
+		if (numberOfTreesBystroListvennoeGoodCondition!=0 || numberOfTreesBystroListvennoeSatisfactoryCondition!=0 || numberOfTreesBystroListvennoeBadCondition!=0 || numberOfTreesBystroListvennoeImproperCondition!=0){
 		pw.println("");
 		pw.println("Для компенсации сноса лиственных быстрорастущих деревьев, необходима посадка: ");
 		pw.println("");}
 		
-		if (ThanTree == 1 || ThanTree == 2){
-			Vobj = 0;
-			Method_XSeven(pw,numberOfTreesBystroListvennoe_hor,2,"(хорошее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_hor);
-			Method_XSeven(pw,numberOfTreesBystroListvennoe_udovl,2,"(удовлетворительное состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_udovl);
-			Method_XSeven(pw,numberOfTreesBystroListvennoe_ploh,2,"(плохое состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_ploh);
-			Method_XSeven(pw,numberOfTreesBystroListvennoe_nenadl,2,"(ненадлежащее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_nenadl);
+		if (typeOfTree == 1 || typeOfTree == 2){
+			summarnoeChisloDereevev = 0;
+			Method_XSeven(pw,numberOfTreesBystroListvennoeGoodCondition,2,"(хорошее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfTreesBystroListvennoeSatisfactoryCondition,2,"(удовлетворительное состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfTreesBystroListvennoeBadCondition,2,"(плохое состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientBadCondition);
+			Method_XSeven(pw,numberOfTreesBystroListvennoeImproperCondition,2,"(ненадлежащее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientImproperCondition);
 
 			pw.println("");
-			pw.println("Vобщее = " + Math.round(Vobj) + ";");
+			pw.println("Vобщее = " + Math.round(summarnoeChisloDereevev) + ";");
 		};
 		
-		if (ThanTree == 3){
-			Vobj = 0;
-			Method_XSeven(pw,numberOfTreesBystroListvennoe_hor,3,"(хорошее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_hor);
-			Method_XSeven(pw,numberOfTreesBystroListvennoe_udovl,3,"(удовлетворительное состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_udovl);
-			Method_XSeven(pw,numberOfTreesBystroListvennoe_ploh,3,"(плохое состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_ploh);
-			Method_XSeven(pw,numberOfTreesBystroListvennoe_nenadl,3,"(ненадлежащее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_nenadl);
+		if (typeOfTree == 3){
+			summarnoeChisloDereevev = 0;
+			Method_XSeven(pw,numberOfTreesBystroListvennoeGoodCondition,3,"(хорошее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfTreesBystroListvennoeSatisfactoryCondition,3,"(удовлетворительное состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfTreesBystroListvennoeBadCondition,3,"(плохое состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientBadCondition);
+			Method_XSeven(pw,numberOfTreesBystroListvennoeImproperCondition,3,"(ненадлежащее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientImproperCondition);
 
 			pw.println("");
-			pw.println("Vобщее = " + Math.round(Vobj) + ";");
+			pw.println("Vобщее = " + Math.round(summarnoeChisloDereevev) + ";");
 		};
 		
-		if (numberOfTreesMalocennoe_hor!=0 || numberOfTreesMalocennoe_udovl!=0 || numberOfTreesMalocennoe_ploh!=0 || numberOfTreesMalocennoe_nenadl!=0){
+		if (numberOfTreesMalocennoeGoodCondition!=0 || numberOfTreesMalocennoeSatisfactoryCondition!=0 || numberOfTreesMalocennoeBadCondition!=0 || numberOfTreesMalocennoeImproperCondition!=0){
 		pw.println("");
 		pw.println("Для компенсации сноса  деревьев малоценной породы, необходима посадка: ");
 		pw.println("");}
 		
-		if (ThanTree == 1 || ThanTree == 2){
-			Vobj = 0;
-			Method_XSeven(pw,numberOfTreesMalocennoe_hor,1,"(хорошее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_hor);
-			Method_XSeven(pw,numberOfTreesMalocennoe_udovl,1,"(удовлетворительное состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_udovl);
-			Method_XSeven(pw,numberOfTreesMalocennoe_ploh,1,"(плохое состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_ploh);
-			Method_XSeven(pw,numberOfTreesMalocennoe_nenadl,1,"(ненадлежащее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_nenadl);
+		if (typeOfTree == 1 || typeOfTree == 2){
+			summarnoeChisloDereevev = 0;
+			Method_XSeven(pw,numberOfTreesMalocennoeGoodCondition,1,"(хорошее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfTreesMalocennoeSatisfactoryCondition,1,"(удовлетворительное состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfTreesMalocennoeBadCondition,1,"(плохое состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientBadCondition);
+			Method_XSeven(pw,numberOfTreesMalocennoeImproperCondition,1,"(ненадлежащее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientImproperCondition);
 
 			pw.println("");
-			pw.println("Vобщее = " + Math.round(Vobj) + ";");
+			pw.println("Vобщее = " + Math.round(summarnoeChisloDereevev) + ";");
 		};
 		
-		if (ThanTree == 3){
-			Vobj = 0;
-			Method_XSeven(pw,numberOfTreesMalocennoe_hor,2,"(хорошее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_hor);
-			Method_XSeven(pw,numberOfTreesMalocennoe_udovl,2,"(удовлетворительное состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_udovl);
-			Method_XSeven(pw,numberOfTreesMalocennoe_ploh,2,"(плохое состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_ploh);
-			Method_XSeven(pw,numberOfTreesMalocennoe_nenadl,2,"(ненадлежащее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_nenadl);
+		if (typeOfTree == 3){
+			summarnoeChisloDereevev = 0;
+			Method_XSeven(pw,numberOfTreesMalocennoeGoodCondition,2,"(хорошее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfTreesMalocennoeSatisfactoryCondition,2,"(удовлетворительное состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfTreesMalocennoeBadCondition,2,"(плохое состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientBadCondition);
+			Method_XSeven(pw,numberOfTreesMalocennoeImproperCondition,2,"(ненадлежащее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientImproperCondition);
 
 			pw.println("");
-			pw.println("Vобщее = " + Math.round(Vobj) + ";");
+			pw.println("Vобщее = " + Math.round(summarnoeChisloDereevev) + ";");
 		};
 		
-		if (numberOfOther_hor!=0 || numberOfOther_udovl!=0 || numberOfOther_ploh!=0 || numberOfOther_nenadl!=0){
+		if (numberOfOtherGoodCondition!=0 || numberOfOtherSatisfactoryCondition!=0 || numberOfOtherBadCondition!=0 || numberOfOtherImproperCondition!=0){
 		pw.println("");
 		pw.println("Для компенсации сноса  хвойных, лиственных медленно-/быстрорастущих(диаметром <1 см.), малоценной породы (диаметром < 4см.), необходима посадка: ");
 		pw.println("");}
 		
-		if (ThanTree == 1 || ThanTree == 2){
-			Vobj = 0;
-			Method_XSeven(pw,numberOfOther_hor,1,"(хорошее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_hor);
-			Method_XSeven(pw,numberOfOther_udovl,1,"(удовлетворительное состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_udovl);
-			Method_XSeven(pw,numberOfOther_ploh,1,"(плохое состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_ploh);
-			Method_XSeven(pw,numberOfOther_nenadl,1,"(ненадлежащее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_nenadl);
+		if (typeOfTree == 1 || typeOfTree == 2){
+			summarnoeChisloDereevev = 0;
+			Method_XSeven(pw,numberOfOtherGoodCondition,1,"(хорошее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfOtherSatisfactoryCondition,1,"(удовлетворительное состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfOtherBadCondition,1,"(плохое состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientBadCondition);
+			Method_XSeven(pw,numberOfOtherImproperCondition,1,"(ненадлежащее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientImproperCondition);
 
 			pw.println("");
-			pw.println("Vобщее = " + Math.round(Vobj) + ";");
+			pw.println("Vобщее = " + Math.round(summarnoeChisloDereevev) + ";");
 		};
 		
-		if (ThanTree == 3){
-			Vobj = 0;
-			Method_XSeven(pw,numberOfOther_hor,2,"(хорошее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_hor);
-			Method_XSeven(pw,numberOfOther_udovl,2,"(удовлетворительное состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_udovl);
-			Method_XSeven(pw,numberOfOther_ploh,2,"(плохое состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_ploh);
-			Method_XSeven(pw,numberOfOther_nenadl,2,"(ненадлежащее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_nenadl);
+		if (typeOfTree == 3){
+			summarnoeChisloDereevev = 0;
+			Method_XSeven(pw,numberOfOtherGoodCondition,2,"(хорошее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfOtherSatisfactoryCondition,2,"(удовлетворительное состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfOtherBadCondition,2,"(плохое состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientBadCondition);
+			Method_XSeven(pw,numberOfOtherImproperCondition,2,"(ненадлежащее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientImproperCondition);
 
 			pw.println("");
-			pw.println("Vобщее = " + Math.round(Vobj) + ";");
+			pw.println("Vобщее = " + Math.round(summarnoeChisloDereevev) + ";");
 		};
 		
-		if (numberOfPorosol_hor!=0 || numberOfPorosol_udovl!=0 || numberOfPorosol_ploh!=0 || numberOfPorosol_nenadl!=0){
+		if (numberOfPorosolGoodCondition!=0 || numberOfPorosolSatisfactoryCondition!=0 || numberOfPorosolBadCondition!=0 || numberOfPorosolImproperCondition!=0){
 		pw.println("");
 		pw.println("Для компенсации сноса  поросли/самосева, необходима посадка: ");
 		pw.println("");}
 		
-		if (ThanTree == 1 || ThanTree == 2){
-			Vobj = 0;
-			Method_XSeven(pw,numberOfPorosol_hor,1,"(хорошее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_hor);
-			Method_XSeven(pw,numberOfPorosol_udovl,1,"(удовлетворительное состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_udovl);
-			Method_XSeven(pw,numberOfPorosol_ploh,1,"(плохое состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_ploh);
-			Method_XSeven(pw,numberOfPorosol_nenadl,1,"(ненадлежащее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_nenadl);
+		if (typeOfTree == 1 || typeOfTree == 2){
+			summarnoeChisloDereevev = 0;
+			Method_XSeven(pw,numberOfPorosolGoodCondition,1,"(хорошее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfPorosolSatisfactoryCondition,1,"(удовлетворительное состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfPorosolBadCondition,1,"(плохое состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientBadCondition);
+			Method_XSeven(pw,numberOfPorosolImproperCondition,1,"(ненадлежащее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientImproperCondition);
 
 			pw.println("");
-			pw.println("Vобщее = " + Math.round(Vobj) + ";");
+			pw.println("Vобщее = " + Math.round(summarnoeChisloDereevev) + ";");
 		};
 		
-		if (ThanTree == 3){
-			Vobj = 0;
-			Method_XSeven(pw,numberOfPorosol_hor,2,"(хорошее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_hor);
-			Method_XSeven(pw,numberOfPorosol_udovl,2,"(удовлетворительное состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_udovl);
-			Method_XSeven(pw,numberOfPorosol_ploh,2,"(плохое состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_ploh);
-			Method_XSeven(pw,numberOfPorosol_nenadl,2,"(ненадлежащее состояние)", K1_ogranichenia, K2_budget, K3_seti, K4_naselennyiPunt, K5_sostoianie_nenadl);
+		if (typeOfTree == 3){
+			summarnoeChisloDereevev = 0;
+			Method_XSeven(pw,numberOfPorosolGoodCondition,2,"(хорошее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfPorosolSatisfactoryCondition,2,"(удовлетворительное состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientSatisfactoryCondition);
+			Method_XSeven(pw,numberOfPorosolBadCondition,2,"(плохое состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientBadCondition);
+			Method_XSeven(pw,numberOfPorosolImproperCondition,2,"(ненадлежащее состояние)", coefficientOgranichenia, coefficientBudget, coefficientSeti, coefficientNaselennyiPunt, coefficientImproperCondition);
 
 			pw.println("");
-			pw.println("Vобщее = " + Math.round(Vobj) + ";");
+			pw.println("Vобщее = " + Math.round(summarnoeChisloDereevev) + ";");
 		};
 		
 		
@@ -1326,15 +1322,15 @@ public class Compensation_v_2_0 extends JFrame{
 	   
 	}
 	
-	public void Method_XSeven (PrintWriter pw, double numberOfTrees, int N, String sostoianie, int K1_ogranichenia, double K2_budget, double K3_seti, double K4_naselennyiPunt, double K5_sostoianie_hor) {
+	public void Method_XSeven (PrintWriter pw, double numberOfTrees, int N, String sostoianie, int K1_ogranichenia, double K2_budget, double coefficientSeti, double coefficientNaselennyiPunt, double K5_sostoianie_hor) {
 		
 		if(numberOfTrees>0) {
 		
 		pw.println("");
-		pw.println(" V = " +  numberOfTrees + " * " +  N  + " * " + K1_ogranichenia + " * " + K2_budget + " * " + K3_seti + " * " + K4_naselennyiPunt + " * " + K5_sostoianie_hor + 
-				" = " + df.format(numberOfTrees*N*K1_ogranichenia*K2_budget*K3_seti*K4_naselennyiPunt*K5_sostoianie_hor) + sostoianie + ";");
+		pw.println(" V = " +  numberOfTrees + " * " +  N  + " * " + K1_ogranichenia + " * " + K2_budget + " * " + coefficientSeti + " * " + coefficientNaselennyiPunt + " * " + K5_sostoianie_hor + 
+				" = " + decimalFormat.format(numberOfTrees*N*K1_ogranichenia*K2_budget*coefficientSeti*coefficientNaselennyiPunt*K5_sostoianie_hor) + sostoianie + ";");
 		}
-		Vobj += numberOfTrees*N*K1_ogranichenia*K2_budget*K3_seti*K4_naselennyiPunt*K5_sostoianie_hor;
+		summarnoeChisloDereevev += numberOfTrees*N*K1_ogranichenia*K2_budget*coefficientSeti*coefficientNaselennyiPunt*K5_sostoianie_hor;
 	}
 	
 	public static boolean itContainsInregerNumbers(String s, String s1)
@@ -1345,7 +1341,7 @@ public class Compensation_v_2_0 extends JFrame{
 	
 	public static void main(String[] args) {
 		
-		Compensation_v_2_0 firstCompensation = new Compensation_v_2_0();
+		Compensation firstCompensation = new Compensation();
 		
 		firstCompensation.go();
 
@@ -1372,38 +1368,38 @@ public class Compensation_v_2_0 extends JFrame{
 										
 										if ((i==21|| i==22|| i==23|| i==24) && str1 != null  && itContainsInregerNumbers(str1, "[0-9]{0,3}[.]?[0-9]{0,2}")){jtf.setBackground(null); {
 											
-											if(i==21) {numberOfPorosol_hor =  Double.parseDouble(str1);jtf.setText(str1);}
-											if(i==22) {numberOfPorosol_udovl = Double.parseDouble(str1); jtf.setText(str1);}
-											if(i==23) {numberOfPorosol_ploh =  Double.parseDouble(str1); jtf.setText(str1);}
-											if(i==24) {numberOfPorosol_nenadl = Double.parseDouble(str1); jtf.setText(str1);}
+											if(i==21) {numberOfPorosolGoodCondition =  Double.parseDouble(str1);jtf.setText(str1);}
+											if(i==22) {numberOfPorosolSatisfactoryCondition = Double.parseDouble(str1); jtf.setText(str1);}
+											if(i==23) {numberOfPorosolBadCondition =  Double.parseDouble(str1); jtf.setText(str1);}
+											if(i==24) {numberOfPorosolImproperCondition = Double.parseDouble(str1); jtf.setText(str1);}
 																																														  }
 										}
 										
 										else if (str1 != null  && itContainsInregerNumbers(str1, "[0-9]?[0-9]?")){jtf.setBackground(null);
-											if(i==1) {numberOfTreesHvoinoe_hor =  Integer.parseInt(str1); jtf.setText(str1);}
-											if(i==2) {numberOfTreesHvoinoe_udovl = Integer.parseInt(str1);jtf.setText(str1);}
-											if(i==3) {numberOfTreesHvoinoe_ploh =  Integer.parseInt(str1); jtf.setText(str1);}
-											if(i==4) {numberOfTreesHvoinoe_nenadl =  Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==1) {numberOfTreesHvoinoeGoodCondition =  Integer.parseInt(str1); jtf.setText(str1);}
+											if(i==2) {numberOfTreesHvoinoeSatisfactoryCondition = Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==3) {numberOfTreesHvoinoeBadCondition =  Integer.parseInt(str1); jtf.setText(str1);}
+											if(i==4) {numberOfTreesHvoinoeImproperCondition =  Integer.parseInt(str1);jtf.setText(str1);}
 											
-											if(i==5) {numberOfTreesMedlennoeListvennoe_hor =  Integer.parseInt(str1);jtf.setText(str1);}
-											if(i==6) {numberOfTreesMedlennoeListvennoe_udovl = Integer.parseInt(str1);jtf.setText(str1);}
-											if(i==7) {numberOfTreesMedlennoeListvennoe_ploh =  Integer.parseInt(str1);jtf.setText(str1);}
-											if(i==8) {numberOfTreesMedlennoeListvennoe_nenadl =  Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==5) {numberOfTreesMedlennoeListvennoeGoodCondition =  Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==6) {numberOfTreesMedlennoeListvennoeSatisfactoryCondition = Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==7) {numberOfTreesMedlennoeListvennoeBadCondition =  Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==8) {numberOfTreesMedlennoeListvennoeImproperCondition =  Integer.parseInt(str1);jtf.setText(str1);}
 											
-											if(i==9) {numberOfTreesBystroListvennoe_hor =  Integer.parseInt(str1);jtf.setText(str1);}
-											if(i==10) {numberOfTreesBystroListvennoe_udovl = Integer.parseInt(str1);jtf.setText(str1);}
-											if(i==11) {numberOfTreesBystroListvennoe_ploh =  Integer.parseInt(str1);jtf.setText(str1);}
-											if(i==12) {numberOfTreesBystroListvennoe_nenadl =  Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==9) {numberOfTreesBystroListvennoeGoodCondition =  Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==10) {numberOfTreesBystroListvennoeSatisfactoryCondition = Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==11) {numberOfTreesBystroListvennoeBadCondition =  Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==12) {numberOfTreesBystroListvennoeImproperCondition =  Integer.parseInt(str1);jtf.setText(str1);}
 											
-											if(i==13) {numberOfTreesMalocennoe_hor =  Integer.parseInt(str1);jtf.setText(str1);}
-											if(i==14) {numberOfTreesMalocennoe_udovl = Integer.parseInt(str1);jtf.setText(str1);}
-											if(i==15) {numberOfTreesMalocennoe_ploh =  Integer.parseInt(str1);jtf.setText(str1);}
-											if(i==16) {numberOfTreesMalocennoe_nenadl =  Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==13) {numberOfTreesMalocennoeGoodCondition =  Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==14) {numberOfTreesMalocennoeSatisfactoryCondition = Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==15) {numberOfTreesMalocennoeBadCondition =  Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==16) {numberOfTreesMalocennoeImproperCondition =  Integer.parseInt(str1);jtf.setText(str1);}
 											
-											if(i==17) {numberOfOther_hor =  Integer.parseInt(str1);jtf.setText(str1);}
-											if(i==18) {numberOfOther_udovl = Integer.parseInt(str1);jtf.setText(str1);}
-											if(i==19) {numberOfOther_ploh =  Integer.parseInt(str1);jtf.setText(str1);}
-											if(i==20) {numberOfOther_nenadl =  Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==17) {numberOfOtherGoodCondition =  Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==18) {numberOfOtherSatisfactoryCondition = Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==19) {numberOfOtherBadCondition =  Integer.parseInt(str1);jtf.setText(str1);}
+											if(i==20) {numberOfOtherImproperCondition =  Integer.parseInt(str1);jtf.setText(str1);}
 										}
 				
 										
