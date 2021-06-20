@@ -253,10 +253,8 @@ public class CompensationInMoney {
     }
 	
 	public void quantityTrees(JTextField jtf, Tree tree) {
-			
 			jtf.setText("Ø/Sпор");
 			jtf.addMouseListener(new MouseAdapter(){
-				
 	            public void mouseClicked(MouseEvent me) {
 	                ((JTextField)me.getSource()).selectAll();
 	            }
@@ -265,23 +263,16 @@ public class CompensationInMoney {
 				{
 					public void actionPerformed(ActionEvent e) 
 					{
-	
 						String str1 = jtf.getText();
-						
 						if (str1 == null) {jtf.setText("");}
-						
-							
 							if (itContainsInregerNumbers(str1, "[0-9]{0,2}[.]?[0-9]{0,1}")){jtf.setBackground(null); {
-								
 								jtf.setText(str1);
-								
 								tree.diameter = Double.parseDouble(str1);
 				  																									}
 																							}	
 						else {jtf.setBackground(Color.RED);jtf.setText("Диаметр/Площадь поросли");}		 
 					}		
 				});
-			
 		}
 	
 	public static boolean itContainsInregerNumbers(String s, String s1)
