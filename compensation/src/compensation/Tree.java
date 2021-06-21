@@ -3,7 +3,13 @@ package compensation;
 
 public class Tree {
 	
- String treeName;
+ @Override
+	public String toString() {
+		return "Tree [treeName=" + treeName + ", diameter=" + diameter + ", state=" + state + ", K1=" + K1 + ", K2="
+				+ K2 + ", K3=" + K3 + ", K4=" + K4 + "]";
+	}
+
+String treeName;
 
  double diameter;
 
