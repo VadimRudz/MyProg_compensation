@@ -293,17 +293,20 @@ public class CompensationInMoney {
     }
 	
 	public void zeroCheck(ArrayList<Tree> arrayTree) {
+		boolean boo=true;
 		for (Tree tree : arrayTree) {
+			System.out.println(tree.toString());
 			if ( (tree.treeName == null && (tree.state != null || tree.diameter > 0))  
 					|| (tree.state == null && (tree.treeName != null || tree.diameter > 0))
 					|| (tree.diameter == 0 && (tree.treeName != null || tree.state != null))
 					|| tree.treeName == null) 
-			{
-				JOptionPane.showMessageDialog(null,"Вы не ввели все требуемые значения","Red Alert",JOptionPane.PLAIN_MESSAGE);
-			}
-			else countingMoneyForOneTree (arrayTree);
-			JOptionPane.showMessageDialog(null,"Расчет выполнен успешно.См'Расчет компенсации деревьев(деньгами).doc'","All is Good",JOptionPane.PLAIN_MESSAGE);
+			{boo = false;
+			}else boo = true;
 		}	
+		if (boo){
+			JOptionPane.showMessageDialog(null,"Расчет выполнен успешно.См'Расчет компенсации деревьев(деньгами).doc'","All is Good",JOptionPane.PLAIN_MESSAGE);
+			countingMoneyForOneTree (arrayTree);
+		}else if (boo==false) JOptionPane.showMessageDialog(null,"Вы не ввели все требуемые значения","Red Alert",JOptionPane.PLAIN_MESSAGE);
 	}
 
 	public void countingMoneyForOneTree (ArrayList<Tree> arrayTree){
